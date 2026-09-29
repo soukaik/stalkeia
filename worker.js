@@ -2,7 +2,63 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
-    // 1. Instagram image proxy endpoint
+    // CORS preflight
+    if (request.method === 'OPTIONS') {
+      return new Response(null, {
+        status: 204,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type, X-Site-Key',
+        }
+      });
+    }
+
+    // 1. HikerAPI proxy endpoint
+    if (url.pathname === '/api/proxy/hikerapi.php') {
+      const path = url.searchParams.get('path');
+      if (!path) {
+        return new Response(JSON.stringify({ error: 'Missing path parameter' }), {
+          status: 400,
+          headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+        });
+      }
+
+      // Forward remaining query params (excluding 'path') to HikerAPI
+      const forwardParams = new URLSearchParams();
+      for (const [key, value] of url.searchParams.entries()) {
+        if (key !== 'path') forwardParams.set(key, value);
+      }
+      const paramStr = forwardParams.toString();
+      const hikerUrl = `https://api.hikerapi.com${path}${paramStr ? `?${paramStr}` : ''}`;
+
+      try {
+        const hikerResp = await fetch(hikerUrl, {
+          method: request.method,
+          headers: {
+            'Content-Type': 'application/json',
+            'x-access-key': request.headers.get('X-Site-Key') || '',
+          },
+          body: request.method !== 'GET' ? request.body : undefined,
+        });
+
+        const data = await hikerResp.text();
+        return new Response(data, {
+          status: hikerResp.status,
+          headers: {
+            'Content-Type': hikerResp.headers.get('content-type') || 'application/json',
+            'Access-Control-Allow-Origin': '*',
+          }
+        });
+      } catch (e) {
+        return new Response(JSON.stringify({ error: 'HikerAPI request failed: ' + e.message }), {
+          status: 502,
+          headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+        });
+      }
+    }
+
+    // 2. Instagram image proxy endpoint
     if (url.pathname === '/api/proxy/image-proxy.php') {
       const target = url.searchParams.get('url');
       if (!target) {
@@ -41,7 +97,7 @@ export default {
       return Response.redirect(new URL('/images/avatars/perfil-sem-foto.jpeg', request.url), 302);
     }
 
-    // 2. Leads endpoint (mock response)
+    // 3. Leads endpoint (mock response)
     if (url.pathname === '/api/proxy/leads.php') {
       return new Response(JSON.stringify({ success: true, exists: false, canSearch: true }), {
         status: 200,
