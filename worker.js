@@ -14,44 +14,85 @@ export default {
       });
     }
 
-    // 1. HikerAPI proxy endpoint
+    // 1. HikerAPI proxy endpoint → forward to stalkeia.website PHP backend
     if (url.pathname === '/api/proxy/hikerapi.php') {
-      const path = url.searchParams.get('path');
-      if (!path) {
-        return new Response(JSON.stringify({ error: 'Missing path parameter' }), {
-          status: 400,
-          headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
-        });
-      }
-
-      // Forward remaining query params (excluding 'path') to HikerAPI
-      const forwardParams = new URLSearchParams();
-      for (const [key, value] of url.searchParams.entries()) {
-        if (key !== 'path') forwardParams.set(key, value);
-      }
-      const paramStr = forwardParams.toString();
-      const hikerUrl = `https://api.hikerapi.com${path}${paramStr ? `?${paramStr}` : ''}`;
+      const targetUrl = `https://stalkeia.website${url.pathname}${url.search}`;
 
       try {
-        const hikerResp = await fetch(hikerUrl, {
+        const hikerResp = await fetch(targetUrl, {
           method: request.method,
           headers: {
             'Content-Type': 'application/json',
-            'x-access-key': request.headers.get('X-Site-Key') || '',
+            'x-site-key': request.headers.get('X-Site-Key') || 'f36ea0b8b6c2a6bbd745bc50e473bfc5b39d0c2a075a38e9',
+            'referer': 'https://stalkeia.website/',
+            'origin': 'https://stalkeia.website',
+            'user-agent': request.headers.get('user-agent') || 'Mozilla/5.0',
           },
           body: request.method !== 'GET' ? request.body : undefined,
         });
+
+        const contentType = hikerResp.headers.get('content-type') || '';
+
+        // If the upstream returned HTML instead of JSON, return a proper JSON error
+        if (contentType.includes('text/html')) {
+          return new Response(JSON.stringify({ error: 'Upstream returned HTML, status: ' + hikerResp.status }), {
+            status: 502,
+            headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+          });
+        }
 
         const data = await hikerResp.text();
         return new Response(data, {
           status: hikerResp.status,
           headers: {
-            'Content-Type': hikerResp.headers.get('content-type') || 'application/json',
+            'Content-Type': contentType || 'application/json',
             'Access-Control-Allow-Origin': '*',
           }
         });
       } catch (e) {
-        return new Response(JSON.stringify({ error: 'HikerAPI request failed: ' + e.message }), {
+        return new Response(JSON.stringify({ error: 'Proxy error: ' + e.message }), {
+          status: 502,
+          headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+        });
+      }
+    }
+
+    // Also handle /api/proxy/instagram.php → forward to stalkeia.website
+    if (url.pathname.startsWith('/api/proxy/') && url.pathname !== '/api/proxy/image-proxy.php' && url.pathname !== '/api/proxy/leads.php') {
+      const targetUrl = `https://stalkeia.website${url.pathname}${url.search}`;
+
+      try {
+        const proxyResp = await fetch(targetUrl, {
+          method: request.method,
+          headers: {
+            'Content-Type': 'application/json',
+            'x-site-key': request.headers.get('X-Site-Key') || 'f36ea0b8b6c2a6bbd745bc50e473bfc5b39d0c2a075a38e9',
+            'referer': 'https://stalkeia.website/',
+            'origin': 'https://stalkeia.website',
+            'user-agent': request.headers.get('user-agent') || 'Mozilla/5.0',
+          },
+          body: request.method !== 'GET' ? request.body : undefined,
+        });
+
+        const contentType = proxyResp.headers.get('content-type') || '';
+
+        if (contentType.includes('text/html')) {
+          return new Response(JSON.stringify({ error: 'Upstream returned HTML, status: ' + proxyResp.status }), {
+            status: 502,
+            headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+          });
+        }
+
+        const data = await proxyResp.text();
+        return new Response(data, {
+          status: proxyResp.status,
+          headers: {
+            'Content-Type': contentType || 'application/json',
+            'Access-Control-Allow-Origin': '*',
+          }
+        });
+      } catch (e) {
+        return new Response(JSON.stringify({ error: 'Proxy error: ' + e.message }), {
           status: 502,
           headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
         });
