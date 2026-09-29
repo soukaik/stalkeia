@@ -1050,7 +1050,7 @@ const X = 600 * 1e3,
                   children: [
                     e.jsx("p", {
                       className: "cta-pricing-old-price",
-                      children: "De: R$ 279,90",
+                      children: "De: R$ 97,90",
                     }),
                     e.jsxs("div", {
                       className: "cta-pricing-current-price",
@@ -1058,7 +1058,7 @@ const X = 600 * 1e3,
                         e.jsxs("p", {
                           className: "cta-pricing-amount",
                           children: [
-                            "R$ 47",
+                            "R$ 17",
                             e.jsx("span", {
                               className: "cta-pricing-cents",
                               children: ",90",
