@@ -53,15 +53,16 @@ export default {
     }
 
     // 3. Custom route for acesso-liberado
+    const assets = env.STATIC_ASSETS || env.ASSETS;
     if (url.pathname === '/acesso-liberado-7k2xp9sv') {
-      if (env && env.ASSETS) {
-        return env.ASSETS.fetch(new Request(new URL('/acesso-liberado-7k2xp9sv.html', request.url), request));
+      if (assets) {
+        return assets.fetch(new Request(new URL('/acesso-liberado-7k2xp9sv.html', request.url), request));
       }
     }
 
     // 4. Serve static assets with SPA fallback
-    if (env && env.ASSETS) {
-      return env.ASSETS.fetch(request);
+    if (assets) {
+      return assets.fetch(request);
     }
 
     return new Response('Not Found', { status: 404 });
